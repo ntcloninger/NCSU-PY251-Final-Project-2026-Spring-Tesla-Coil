@@ -1,0 +1,18 @@
+
+Steady State:
+    Graph Creator():
+        Once we have the steady state this function can both iterate the guess to steady state and make the graph understandable.
+
+    Input Wrapper():
+        This takes the inputs from the user and formats them to be used.
+
+    Steady State Driver():
+        Sends the user inputs to "/Steady State/Input Wrapper",
+        makes and itterates a guess with "/Tesla Coil/System iterator",
+        makes a graph of the steady state with "/Steady State/Graph Creater", 
+        and then outputs to "../../Presentation Figures".
+        The guess creater code is located here.
+
+Tesla Coil:
+    System Iterator():
+        The step function for the system with a given input and step size.

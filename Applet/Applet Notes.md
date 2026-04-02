@@ -1,0 +1,1 @@
+The Applet for inputing voltmeter or Ampmeter locations with capaciatance, spark gap, and resistance.
