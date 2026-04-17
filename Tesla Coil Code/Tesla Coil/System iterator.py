@@ -1,6 +1,25 @@
 import numpy as np
-#get odient
-#make funcs
-#set derivs
-#solve
-#return
+from scipy.integrate import odeint
+
+def Tesla_Coil_Solver(t , s_initial, pars): #take in initial value and parameters
+    def deriv(s,t):#organizes derivative equations with given initial
+        sparky_distance = pars[]
+
+        s_1 = s[] #loop 1
+        s_2 = s[] #loop 2
+        s_3 = s[] #loop 3
+        temp_sparky = s[] #sparky temp
+
+        if temp_sparky: #This makes the diff for the different states
+            ds_2 = 
+        else:
+            ds_2 = 
+
+        deriv = [, ]
+        return deriv
+
+    def diffeq_solver_from_scipy(t, s_initial, deriv): #solves diff equation
+        s = odeint(deriv, s_initial, t)
+        return t,s
+
+    return diffeq_solver_from_scipy(t, s_initial, deriv) 
