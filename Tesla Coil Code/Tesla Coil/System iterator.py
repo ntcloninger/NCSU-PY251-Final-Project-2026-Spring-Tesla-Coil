@@ -4,6 +4,8 @@ from scipy.integrate import odeint
 def Tesla_Coil_Solver(t , s_initial, pars): #take in initial value and parameters
     def deriv(s,t):#organizes derivative equations with given initial
         sparky_distance = pars[]
+        resistance  = pars[]
+        #some function of temp and sparky distance for sparky resistance
 
         s_1 = s[] #loop 1
         s_2 = s[] #loop 2
