@@ -12,7 +12,7 @@ def Tesla_Coil_Solver(t , s_initial, pars): #take in initial value and parameter
         s_3 = s[] #loop 3
         temp_sparky = s[] #sparky temp
 
-        if temp_sparky: #This makes the diff for the different states
+        if temp_sparky: #This makes the diff for the different states of loop 2 
             ds_2 = 
         else:
             ds_2 = 
