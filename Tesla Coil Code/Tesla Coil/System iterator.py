@@ -12,7 +12,16 @@ def Tesla_Coil_Solver(t , s_initial, pars): #take in initial value and parameter
         s_3 = s[] #loop 3
         temp_sparky = s[] #sparky temp
 
-        if temp_sparky: #This makes the diff for the different states of loop 2 
+        #for air
+        A = 112.5
+        B = 2737.5
+        p = 101325 #pascals
+        gamma_se = 100 #????? fix this
+
+        Breakdown_Voltage = (B*p*sparky_distance)/(np.log(A*p*sparky_distance) - np.log(np.log(1 + 1/gamma_se)))#pashen cure function
+
+
+        if s_2[] < Breakdown_Voltage: #This makes the diff for the different states of loop 2 
             ds_2 = 
         else:
             ds_2 = 
