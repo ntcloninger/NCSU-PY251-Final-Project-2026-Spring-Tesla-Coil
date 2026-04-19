@@ -2,12 +2,23 @@ import numpy as np
 from scipy.integrate import odeint
 
 def Tesla_Coil_Solver(t , s_initial, pars): #take in initial value and parameters
+    C_1 = pars[0]
+    C_2 = pars[1]
+    R_1 = pars[2]
+    R_2 = pars[3]
+    R_3 = pars[4]
+    L_1 = pars[5]
+    L_2 = pars[6]
+    AC_amplitude = pars[7]
+    AC_frequency = pars[8]
+    sparky_distance = pars[9]
+
     def deriv(s,t):#organizes derivative equations with given initial
-        sparky_distance = pars[]
-        resistance  = pars[]
+
         #some function of temp and sparky distance for sparky resistance
 
         s_1 = s[] #loop 1
+        
         s_2 = s[] #loop 2
         s_3 = s[] #loop 3
         temp_sparky = s[] #sparky temp
