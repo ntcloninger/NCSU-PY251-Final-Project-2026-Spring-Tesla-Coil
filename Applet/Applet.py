@@ -7,21 +7,22 @@ from System_iterator import Tesla_Coil_Solver
 
 # import any libraries that we need
 
-# get input parameters from user and assigns those values to their corresponding value
+
 
 # Shows the tesla coil curcuit for demonstration purposes 
-st.image("1000002237.jpg", caption="tesla coil")
+st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 
-C1 = st.number_input("Type C1 Value: ")
-C2 = st.number_input("Type C2 Value: ")
-R1 = st.number_input("Type R1 Value: ")
-R2 = st.number_input("Type R2 Value: ")
-R3 = st.number_input("Type R3 Value: ")
-L1 = st.number_input("Type L1 Value: ")
-L2 = st.number_input("Type L2 Value: ")
-sparky = st.number_input("Spark Gap Distance Value: ")
-ac_amp = st.number_input("AC Amplitude Value: ")
-ac_freq = st.number_input("AC Frequency Value: ")
+# get input parameters from user and assigns those values to their corresponding value
+C1 = st.number_input("Type C1 Value[F]: ", value=1)
+C2 = st.number_input("Type C2 Value[F]: ",value=100)
+R1 = st.number_input("Type R1 Value[Ohm]: ", value=10)
+R2 = st.number_input("Type R2 Value[Ohm]: ", value=20)
+R3 = st.number_input("Type R3 Value[Ohm]: ", value=100)
+L1 = st.number_input("Type L1 Value[H]: ", value=1)
+L2 = st.number_input("Type L2 Value[H]: ", value=50)
+sparky_distance = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
+ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
+ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
 
 
 # calls global wrapper function, plugging in those input parameters
