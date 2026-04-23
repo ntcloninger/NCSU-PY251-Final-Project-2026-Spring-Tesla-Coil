@@ -20,7 +20,7 @@ R2 = st.number_input("Type R2 Value[Ohm]: ", value=20)
 R3 = st.number_input("Type R3 Value[Ohm]: ", value=100)
 L1 = st.number_input("Type L1 Value[H]: ", value=1)
 L2 = st.number_input("Type L2 Value[H]: ", value=50)
-sparky_distance = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
+sparky = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
 ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
 ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
 
