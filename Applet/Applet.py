@@ -9,12 +9,13 @@ from System_iterator import Tesla_Coil_Solver
 
 # get input parameters from user and assigns those values to their corresponding value
 
+st.image("1000002237.jpg", caption="tesla coil")
 
-C1 = # put in user's input for C1
-C2 = # put in user's input for C2
-sparky_distance = # put in user's input for sparky's distance
-ac_amp = # put in user's input for ac amplitude
-ac_freq = # put n user's input input for ac frequency 
+C1 = st.number_input("Type C1 Value: ")
+C2 = st.number_input("Type C2 Value: ")
+sparky_distance = st.number_input("Spark Gap Distance Value: ")
+ac_amp = st.number_input("AC Amplitude Value: ")
+ac_freq = st.number_input("AC Frequency Value: ")
 
 
 # calls global wrapper function, plugging in those input parameters
