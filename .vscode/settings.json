@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "./Tesla Coil Code/Steady State",
+        "./Tesla Coil Code/Tesla Coil"
+    ]
+}
