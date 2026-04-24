@@ -1,9 +1,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from Tesla Coil Code
-from Steady_State_Driver import # put in the function 
-from System_iterator import Tesla_Coil_Solver
+from Tesla_Coil_Code.Steady_State.Input_Wrapper import input_wrapper
+from Tesla_Coil_Code.Steady_State.Graph_Creater import Cycle_Graph_20
+from Tesla_Coil_Code.Tesla_Coil.TeslaCoil import Tesla_Coil_Solver
 
 # import any libraries that we need
 
