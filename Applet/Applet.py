@@ -33,7 +33,6 @@ init_state, pars = input_wrapper(L1=L1, L2, L3, L4, R1, R2, R3, Rsparky, C1, C2,
 # sends those values to the global steady state function
 # returned values get used to make a graph 
 
-
 Va = 
 Vb = 
 Vc = 
