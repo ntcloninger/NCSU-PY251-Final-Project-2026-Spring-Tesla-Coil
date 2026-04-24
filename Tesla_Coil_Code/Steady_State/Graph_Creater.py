@@ -1,1 +1,1 @@
-def Cycle_Graph_20()
+def Cycle_Graph_20():
