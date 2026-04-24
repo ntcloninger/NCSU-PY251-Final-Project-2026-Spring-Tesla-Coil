@@ -7,25 +7,25 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
         def __init__(self, pars):
             self.L1 = pars[0]
             self.L2 = pars[1]
-            self.L3 = 1
-            self.L4 = 5
+            self.L3 = pars[2]
+            self.L4 = pars[3]
 
-            self.R1 = 100
-            self.R2 = 100
-            self.R3 = 100000
-            self.Rsparky = 1
+            self.R1 = pars[4]
+            self.R2 = pars[5]
+            self.R3 = pars[6]
+            self.Rsparky = pars[7]
 
-            self.C1 = 100
-            self.C2 = 1
-            self.C3 = 1000
+            self.C1 = pars[8]
+            self.C2 = pars[9]
+            self.C3 = pars[10]
 
-            self.AC_amplitude = 120
-            self.AC_frequency = 60/(2*np.pi)
+            self.AC_amplitude = pars[11]
+            self.AC_frequency = pars[12]
 
             self.sparky_distance = pars[13]
 
-            self.k1 = 1
-            self.k2 = 0.5
+            self.k1 = pars[14]
+            self.k2 = pars[15]
             self.M1 = self.k1*np.sqrt(self.L1*self.L2)
             self.M2 = self.k2*np.sqrt(self.L3*self.L4)
         

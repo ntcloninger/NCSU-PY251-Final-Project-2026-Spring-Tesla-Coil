@@ -24,7 +24,7 @@ sparky = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
 ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
 ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
 
-
+            [L1, L2, L3, L4, R1, R2, R3, Rsparky, C1, C2, C3, AC_amplitude, AC_frequency, sparky_distance, k1, k2]
 # calls global wrapper function, plugging in those input parameters
 # puts the return values into their own variables
 init_state, pars = input_wrapper(C_1=C1, C_2=C2, R_1=R1, R_2=R2, R_3=R3, L_1=L1, L_2=L2, 
