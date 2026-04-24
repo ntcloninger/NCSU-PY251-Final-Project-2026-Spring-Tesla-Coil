@@ -1,1 +1,7 @@
-def Cycle_Graph_20():
+def Cycle_Graph_20(pars, q, t):
+
+    VA = 
+    VB = 
+    VC = 
+
+    #create plot
