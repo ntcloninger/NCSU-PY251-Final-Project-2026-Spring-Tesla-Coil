@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from Input_Wrapper import input_wrapper
+from Tesla Coil Code
 from Steady_State_Driver import # put in the function 
 from System_iterator import Tesla_Coil_Solver
 
