@@ -14,17 +14,21 @@ st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 
 # get input parameters from user and assigns those values to their corresponding value
 C1 = st.number_input("Type C1 Value[F]: ", value=1)
-C2 = st.number_input("Type C2 Value[F]: ",value=100)
+C2 = st.number_input("Type C2 Value[F]: ",value=10)
+C3 = st.number_input("Type C3 Value[F]: ",value=100)
 R1 = st.number_input("Type R1 Value[Ohm]: ", value=10)
 R2 = st.number_input("Type R2 Value[Ohm]: ", value=20)
 R3 = st.number_input("Type R3 Value[Ohm]: ", value=100)
 L1 = st.number_input("Type L1 Value[H]: ", value=1)
 L2 = st.number_input("Type L2 Value[H]: ", value=50)
+L3 = st.number_input("Type L3 Value[H]: ", value=10)
+L4 = st.number_input("Type L4 Value[H]: ", value=100)
+k1 = st.number_input("Type k1 Value[F]: ",value=1)
+k2 = st.number_input("Type k1 Value[F]: ",value=0.5)
 sparky = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
 ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
 ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
 
-            [L1, L2, L3, L4, R1, R2, R3, Rsparky, C1, C2, C3, AC_amplitude, AC_frequency, sparky_distance, k1, k2]
 # calls global wrapper function, plugging in those input parameters
 # puts the return values into their own variables
 init_state, pars = input_wrapper(C_1=C1, C_2=C2, R_1=R1, R_2=R2, R_3=R3, L_1=L1, L_2=L2, 
