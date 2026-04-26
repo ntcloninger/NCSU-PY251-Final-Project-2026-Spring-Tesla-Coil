@@ -7,8 +7,6 @@ from Tesla_Coil_Code.Tesla_Coil.TeslaCoil import Tesla_Coil_Solver
 
 # import any libraries that we need
 
-
-
 # Shows the tesla coil curcuit for demonstration purposes 
 st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 
