@@ -37,12 +37,18 @@ pars = input_wrapper(C_1=C1, C_2=C2, C_3=C3, R_1=R1, R_2=R2, R_3=R3, L_1=L1, L_2
 
 # sends those values to the global steady state function
 # returned values get used to make a graph 
+times = np.linspace(0.0, 10.0, 100)
+voltPars = Tesla_Coil_Solver(times, pars)
+# loop 1: voltPars[0] returns charge, voltPars[1] is change in charge, voltPars[2] change in change in charge
+# loop 2: voltPars[3] returns charge, voltPars[4] is change in charge, voltPars[5] change in change in charge
+# loop 3: voltPars[6] returns charge, voltPars[7] is change in charge, voltPars[8] change in change in charge
 
+# creates the 3 graphs
+Cycle_Graph_20(pars=pars, q=voltPars, t=times)
 
-
-Va = 
+""" Va = 
 Vb = 
-Vc = 
+Vc =  """
 
 
 
