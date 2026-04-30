@@ -1,11 +1,10 @@
+# import any libraries that we need
 import streamlit as st
 import numpy as np
 import pandas as pd
 from Tesla_Coil_Code.Steady_State.Input_Wrapper import input_wrapper
 from Tesla_Coil_Code.Steady_State.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.Tesla_Coil.TeslaCoil import Tesla_Coil_Solver
-
-# import any libraries that we need
 
 
 
@@ -15,6 +14,7 @@ st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 with st.form("Calc_Form"):
     st.header("Input Parameters")
 
+    #creates inputs for users
     C1 = st.number_input("Type C1 Value[F]: ", value=1)
     C2 = st.number_input("Type C2 Value[F]: ",value=100)
     C3 = st.number_input("Type C3 Value[F]: ",value=100)
@@ -33,9 +33,11 @@ with st.form("Calc_Form"):
 
     submitted = st.form_submit_button("Upload and Run")
 
+#confirms submissions
 if submitted:
     st.success("Values uploaded!")
 
+#creates graphs
 t_array = np.linspace(0, 10, 20)
 y_array = 2 * t_array
 
