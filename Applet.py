@@ -48,7 +48,7 @@ st.line_chart(chart_data)
 # calls global wrapper function, plugging in those input parameters
 # puts the return values into their own variables
 pars = input_wrapper(C_1=C1, C_2=C2, C_3=C3, R_1=R1, R_2=R2, R_3=R3, L_1=L1, L_2=L2, L_3=L3, L_4=L4,
-                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky, k1= k1, k2=k1)
+                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
 
 # sends those values to the global steady state function
