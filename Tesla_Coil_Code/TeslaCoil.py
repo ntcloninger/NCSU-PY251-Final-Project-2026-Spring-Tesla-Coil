@@ -34,7 +34,7 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
             B = 2737.5
             p = 101325 #pascals
             gamma_se = 0.5 #Half of atoms give of another electron
-            self.Breakdown_Voltage = (B*p*self.sparky_distance)/(np.log(A*p*self.sparky_distance) - np.log(np.log(1 + 1/gamma_se)))#pashen cure function
+            self.Breakdown_Voltage = (1/100)*(B*p*self.sparky_distance)/(np.log(A*p*self.sparky_distance) - np.log(np.log(1 + 1/gamma_se)))#pashen cure function
             self.q_initial = [0,0,0,0,0,0,0,0,0]
             self.q_steady_state = [0,0,0,0,0,0,0,0,0]
             #q[i-1][derivative]
@@ -52,8 +52,10 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
                 dq2_2_temp = ((self.M2/self.L4)*(self.R3*q[8] + q[7]/self.C3 - self.R2*q[5] + q[4]/self.C2\
                            - (self.M1/self.L1)*(self.df(t) + q[1]/self.C1) + self.R1*q[2]))\
                            /(self.L3-self.L2 + (self.k1**2)*self.L2 - (self.k2**2)*self.L3)
-                dq1_2_temp = (self.df(t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
-                dq3_2_temp = (self.R3*q[8] + q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
+            #
+            #
+                dq1_2_temp = (-self.AC_amplitude*self.AC_frequency*np.cos(self.AC_frequency*t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
+                dq3_2_temp = (-self.R3*q[8] - q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
                 dq = [q[1],\
                       q[2],\
                       dq1_2_temp,\
