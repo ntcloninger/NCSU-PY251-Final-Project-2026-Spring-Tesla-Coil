@@ -25,6 +25,8 @@ with st.form("Calc_Form"):
     sparky_distance = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
     ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
     ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
+    voltage_point = st.string_input("Voltage Point (A/B/C): ",value='C')
+    breakdown = st.string_input("Before or After Breakdown (B/A): ",value="B")
 
     submitted = st.form_submit_button("Upload and Run")
 
@@ -38,11 +40,36 @@ pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1
                     AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
-q1, q2 = Tesla_Coil_Solver(t, pars)
+q1, q2 = Tesla_Coil_Solver(t_array, pars)
+
 VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
 VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
+VB1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
+VB2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
+VC1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
+VC2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
-chart_data = pd.DataFrame(VA1_array, index=t_array)
+if voltage_point == 'A' or voltage_point == 'a':
+    if breakdown == 'B' or breakdown == 'b':
+        output_voltage_array = VA1_array
+    if breakdown == 'A' or breakdown == 'a':
+        output_voltage_array = VA2_array
+
+if voltage_point == 'B' or voltage_point == 'd':
+    if breakdown == 'B' or breakdown == 'b':
+        output_voltage_array = VB1_array
+    if breakdown == 'A' or breakdown == 'a':
+        output_voltage_array = VB2_array
+
+if voltage_point == 'C' or voltage_point == 'c':
+    if breakdown == 'B' or breakdown == 'b':
+        output_voltage_array = VC1_array
+    if breakdown == 'A' or breakdown == 'a':
+        output_voltage_array = VC2_array
+
+
+
+chart_data = pd.DataFrame(output_voltage_array, index=t_array)
 
 st.line_chart(chart_data)
 
