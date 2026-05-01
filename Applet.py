@@ -8,7 +8,7 @@ import schemdraw.elements as e
 from Tesla_Coil_Code.Input_Wrapper import input_wrapper
 from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
-#Background Color
+#Background Color and text color
 st.markdown(
     """
     <style>
