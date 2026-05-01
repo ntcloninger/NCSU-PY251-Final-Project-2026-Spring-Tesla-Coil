@@ -14,18 +14,14 @@ with st.form("Calc_Form"):
     st.header("Input Parameters")
 
     #creates inputs for users
-    C1 = st.number_input("Type C1 Value[F]: ", value=1)
     C2 = st.number_input("Type C2 Value[F]: ",value=100)
-    C3 = st.number_input("Type C3 Value[F]: ",value=100)
-    R1 = st.number_input("Type R1 Value[Ohm]: ", value=10)
-    R2 = st.number_input("Type R2 Value[Ohm]: ", value=20)
     R3 = st.number_input("Type R3 Value[Ohm]: ", value=100)
     L1 = st.number_input("Type L1 Value[H]: ", value=1)
     L2 = st.number_input("Type L2 Value[H]: ", value=50)
     L3 = st.number_input("Type L3 Value[H]: ", value=10)
     L4 = st.number_input("Type L4 Value[H]: ", value=100)
-    k1 = st.number_input("Type k1 Value[F]: ",value=1)
-    k2 = st.number_input("Type k1 Value[F]: ",value=0.5)
+    k1 = st.number_input("Type k1 Value[F]: ",value=0.6)
+    k2 = st.number_input("Type k1 Value[F]: ",value=0.3)
     sparky_distance = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
     ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
     ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
@@ -56,14 +52,11 @@ st.line_chart(chart_data)
 
 # sends those values to the global steady state function
 # returned values get used to make a graph 
-times = np.linspace(0.0, 10.0, 100)
-voltPars = Tesla_Coil_Solver(times, pars)
 # loop 1: voltPars[0] returns charge, voltPars[1] is change in charge, voltPars[2] change in change in charge
 # loop 2: voltPars[3] returns charge, voltPars[4] is change in charge, voltPars[5] change in change in charge
 # loop 3: voltPars[6] returns charge, voltPars[7] is change in charge, voltPars[8] change in change in charge
 
 # creates the 3 graphs
-Cycle_Graph_20(pars=pars, q=voltPars, t=times)
 
 """ Va = 
 Vb = 
