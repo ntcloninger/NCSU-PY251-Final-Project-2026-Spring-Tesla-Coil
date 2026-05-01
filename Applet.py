@@ -37,10 +37,12 @@ if submitted:
     st.success("Values uploaded!")
 
 #creates graphs
-t_array = np.linspace(0, 10, 20)
-y_array = 2 * t_array
+t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
+q1, q2 = Tesla_Coil_Solver(t, pars)
+VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
+VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
-chart_data = pd.DataFrame(y_array, index=t_array)
+chart_data = pd.DataFrame(VA1_array, index=t_array)
 
 st.line_chart(chart_data)
 

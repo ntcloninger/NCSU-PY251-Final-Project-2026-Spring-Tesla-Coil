@@ -46,9 +46,9 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
             return self.AC_frequency*self.AC_amplitude*np.cos(self.AC_frequency*t)
 
         def deriv1(self, q,t):#organizes derivative equations with given initial
-            dq2_2_temp = ((self.M2/self.L4)*(self.R3*q[8] + q[7]/self.C3 - self.R2*q[5] + q[4]/self.C2\
-                       - (self.M1/self.L1)*(self.df(t) + q[1]/self.C1) + self.R1*q[2]))\
-                       /(self.L3-self.L2 + (self.k1**2)*self.L2 - (self.k2**2)*self.L3)
+            dq2_2_temp = (1/(self.L1*self.L4*(self.L2*(self.k1**2-1)+self.L3*(self.k2**2-1))))\
+                *(self.L4*(self.AC_amplitude*self.AC_frequency*np.cos(self.AC_frequency*t) + q[1]/self.C1 + self.R1*q[2])\
+                  +self.L1*(self.R3*q[8] + q[7]/self.C3) + self.L1*self.L4*(self.R2*q[5]+q[4]/self.C2))
             dq1_2_temp = (-self.AC_amplitude*self.AC_frequency*np.cos(self.AC_frequency*t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
             dq3_2_temp = (-self.R3*q[8] - q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
             dq = [q[1],\
