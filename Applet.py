@@ -6,7 +6,6 @@ import pandas as pd
 import schemdraw
 import schemdraw.elements as e
 from Tesla_Coil_Code.Input_Wrapper import input_wrapper
-#from Tesla_Coil_Code.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
 #Background Color
@@ -63,6 +62,7 @@ with schemdraw.Drawing() as d:
 # Display in Streamlit
 st.image('circuit.png')
 
+#Adds user input parameters 
 with st.form("Calc_Form"):
     st.header("Input Parameters - Tesla Coil")
 
@@ -88,21 +88,22 @@ if submitted:
     st.success("Values uploaded!")
 
 #creates graphs
-
+# calls global wrapper function, plugging in those input parameters
 pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_3=R3, C_2=C2,
                     AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
+#creates initial arrays
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
 q1, q2 = Tesla_Coil_Solver(t_array, pars)
 
 VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[13]*np.sqrt(pars[0]*pars[1])*q1[:,5]
 VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
-VB1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
-VB2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
+VB1_array = (pars[1])*q1[:,5] - pars[13]*np.sqrt(pars[0]*pars[1])*q1[:,2]
+VB2_array = 0
 
-VC1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
-VC2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
+VC1_array = (pars[0])*q1[:,2]+(pars[7])*q1[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
+VC2_array = (pars[0])*q2[:,2]+(pars[7])*q2[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
 
 if str.capitalize(list(voltage_point)[-1]) == 'A':
     if str.capitalize(breakdown) == 'B' or str.capitalize(breakdown) == 'BEFORE':
@@ -126,12 +127,12 @@ if str.capitalize(list(voltage_point)[-1]) == 'C':
         output_voltage_array = VC2_array
 
 
-
+#first put in the y axis, then index=x axis
 chart_data = pd.DataFrame(output_voltage_array, index=t_array)
-
+#creates the graph!
 st.line_chart(chart_data)
 
-# calls global wrapper function, plugging in those input parameters
+
 # puts the return values into their own variables
 
 
