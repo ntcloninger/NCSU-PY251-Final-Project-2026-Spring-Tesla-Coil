@@ -2,9 +2,9 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
-from Tesla_Coil_Code.Steady_State.Input_Wrapper import input_wrapper
-from Tesla_Coil_Code.Steady_State.Graph_Creater import Cycle_Graph_20
-from Tesla_Coil_Code.Tesla_Coil.TeslaCoil import Tesla_Coil_Solver
+from Tesla_Coil_Code.Input_Wrapper import input_wrapper
+from Tesla_Coil_Code.Graph_Creater import Cycle_Graph_20
+from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
 
 # Shows the tesla coil circuit for demonstration purposes 
