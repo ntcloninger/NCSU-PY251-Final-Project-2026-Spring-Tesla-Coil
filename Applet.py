@@ -6,7 +6,6 @@ import pandas as pd
 import schemdraw
 import schemdraw.elements as e
 from Tesla_Coil_Code.Input_Wrapper import input_wrapper
-#from Tesla_Coil_Code.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
 #Background Color
@@ -63,6 +62,7 @@ with schemdraw.Drawing() as d:
 # Display in Streamlit
 st.image('circuit.png')
 
+#Adds user input parameters 
 with st.form("Calc_Form"):
     st.header("Input Parameters - Tesla Coil")
 
@@ -88,10 +88,11 @@ if submitted:
     st.success("Values uploaded!")
 
 #creates graphs
-
+# calls global wrapper function, plugging in those input parameters
 pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_3=R3, C_2=C2,
                     AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
+#creates initial arrays
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
 q1, q2 = Tesla_Coil_Solver(t_array, pars)
 
@@ -126,12 +127,12 @@ if str.capitalize(list(voltage_point)[-1]) == 'C':
         output_voltage_array = VC2_array
 
 
-
+#first put in the y axis, then index=x axis
 chart_data = pd.DataFrame(output_voltage_array, index=t_array)
-
+#creates the graph!
 st.line_chart(chart_data)
 
-# calls global wrapper function, plugging in those input parameters
+
 # puts the return values into their own variables
 
 
