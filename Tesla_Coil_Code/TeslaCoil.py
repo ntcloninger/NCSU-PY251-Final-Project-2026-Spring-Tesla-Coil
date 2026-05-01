@@ -13,21 +13,21 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
             self.R1 = pars[4]
             self.R2 = pars[5]
             self.R3 = pars[6]
-            self.Rsparky = pars[7]
+            self.Rsparky = 1
 
-            self.C1 = pars[8]
-            self.C2 = pars[9]
-            self.C3 = pars[10]
+            self.C1 = pars[7]
+            self.C2 = pars[8]
+            self.C3 = pars[9]
 
-            self.AC_amplitude = pars[11]
-            self.AC_frequency = pars[12]
+            self.AC_amplitude = pars[10]
+            self.AC_frequency = pars[11]
 
-            self.sparky_distance = pars[13]
+            self.sparky_distance = pars[12]
 
-            self.k1 = pars[14]
-            self.k2 = pars[15]
-            self.M1 = -self.k1*np.sqrt(self.L1*self.L2)
-            self.M2 = -self.k2*np.sqrt(self.L3*self.L4)
+            self.k1 = pars[13]
+            self.k2 = pars[14]
+            self.M1 = self.k1*np.sqrt(self.L1*self.L2)
+            self.M2 = self.k2*np.sqrt(self.L3*self.L4)
         
             #for air
             A = 0112.5

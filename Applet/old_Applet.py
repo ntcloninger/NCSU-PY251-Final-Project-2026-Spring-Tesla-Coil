@@ -7,13 +7,13 @@ from Tesla_Coil_Code.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
 
-# Shows the tesla coil curcuit for demonstration purposes 
+# Shows the tesla coil circuit for demonstration purposes 
 st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 
+#Input value Button
 with st.form("Calc_Form"):
     st.header("Input Parameters")
 
-    #creates inputs for users
     C1 = st.number_input("Type C1 Value[F]: ", value=1)
     C2 = st.number_input("Type C2 Value[F]: ",value=100)
     C3 = st.number_input("Type C3 Value[F]: ",value=100)
@@ -32,22 +32,24 @@ with st.form("Calc_Form"):
 
     submitted = st.form_submit_button("Upload and Run")
 
-#confirms submissions
+#Submittion Confirmation
 if submitted:
     st.success("Values uploaded!")
 
-#creates graphs
+#Test graph
 t_array = np.linspace(0, 10, 20)
 y_array = 2 * t_array
 
+#You need to put x and y into this thing instead of directly into the the plotting thing
 chart_data = pd.DataFrame(y_array, index=t_array)
 
+#The plotting thing
 st.line_chart(chart_data)
 
 # calls global wrapper function, plugging in those input parameters
 # puts the return values into their own variables
-pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1=C1, C_2=C2, C_3=C3,
-                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
+pars = input_wrapper(C_1=C1, C_2=C2, C_3=C3, R_1=R1, R_2=R2, R_3=R3, L_1=L1, L_2=L2, L_3=L3, L_4=L4,
+                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky, k1= k1, k2=k1)
 
 
 # sends those values to the global steady state function
