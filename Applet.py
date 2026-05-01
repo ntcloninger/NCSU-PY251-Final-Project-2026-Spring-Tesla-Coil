@@ -95,7 +95,7 @@ pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_3=R3, C_2=C2,
 #creates initial arrays
 t_array = np.linspace(0,1000/(pars[11]*2*np.pi),10000)
 q1, q2 = Tesla_Coil_Solver(t_array, pars)
-
+# finds the voltages
 VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[13]*np.sqrt(pars[0]*pars[1])*q1[:,5]
 VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
@@ -104,7 +104,7 @@ VB2_array = 0
 
 VC1_array = (pars[0])*q1[:,2]+(pars[7])*q1[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
 VC2_array = (pars[0])*q2[:,2]+(pars[7])*q2[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
-
+# Picks the voltages to graph
 if str.capitalize(list(voltage_point)[-1]) == 'A':
     if str.capitalize(breakdown) == 'B' or str.capitalize(breakdown) == 'BEFORE':
         output_voltage_array = VA1_array
@@ -131,14 +131,6 @@ if str.capitalize(list(voltage_point)[-1]) == 'C':
 chart_data = pd.DataFrame(output_voltage_array, index=t_array)
 #creates the graph!
 st.line_chart(chart_data)
-
-
-# puts the return values into their own variables
-
-
-# sends those values to the global steady state function
-# returned values get used to make a graph 
-# creates the 3 graphs
 
 
 
