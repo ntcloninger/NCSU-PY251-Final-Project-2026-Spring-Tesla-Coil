@@ -89,7 +89,7 @@ if submitted:
 
 #creates graphs
 
-pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1=C1, C_2=C2, C_3=C3,
+pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_3=R3, C_2=C2,
                     AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
