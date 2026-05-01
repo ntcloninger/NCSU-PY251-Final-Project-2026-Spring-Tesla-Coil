@@ -78,8 +78,8 @@ with st.form("Calc_Form"):
     sparky_distance = st.number_input("Spark Gap Distance Value[m]: ",value=0.1)
     ac_amp = st.number_input("AC Amplitude Value[m]: ",value=170)
     ac_freq = st.number_input("AC Frequency Value[Hz]: ",value=60)
-    voltage_point = st.string_input("Voltage Point (A/B/C): ",value='C')
-    breakdown = st.string_input("Before or After Breakdown (B/A): ",value="B")
+    voltage_point = st.text_input("Voltage Point (A/B/C): ",value='C')
+    breakdown = st.text_input("Before or After Breakdown (B/A): ",value="B")
 
     submitted = st.form_submit_button("Upload and Run")
 
