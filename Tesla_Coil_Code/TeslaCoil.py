@@ -26,8 +26,8 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
 
             self.k1 = pars[13]
             self.k2 = pars[14]
-            self.M1 = -self.k1*np.sqrt(self.L1*self.L2)
-            self.M2 = -self.k2*np.sqrt(self.L3*self.L4)
+            self.M1 = self.k1*np.sqrt(self.L1*self.L2)
+            self.M2 = self.k2*np.sqrt(self.L3*self.L4)
         
             #for air
             A = 0112.5
