@@ -100,7 +100,7 @@ VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[13]*np.
 VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
 VB1_array = (pars[1])*q1[:,5] - pars[13]*np.sqrt(pars[0]*pars[1])*q1[:,2]
-VB2_array = 0
+VB2_array = 0*q1[:,0]
 
 VC1_array = (pars[0])*q1[:,2]+(pars[7])*q1[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
 VC2_array = (pars[0])*q2[:,2]+(pars[7])*q2[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
