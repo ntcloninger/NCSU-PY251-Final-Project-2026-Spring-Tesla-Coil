@@ -65,7 +65,7 @@ st.image('circuit.png')
 
 #Adds user input parameters 
 with st.form("Calc_Form"):
-    st.header("Input Parameters")
+    st.header("Input Parameters - Tesla Coil")
 
     #creates inputs for users
     C2 = st.number_input("Type C2 Value[F]: ",value=100)
