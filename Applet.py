@@ -37,6 +37,10 @@ if submitted:
     st.success("Values uploaded!")
 
 #creates graphs
+
+pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1=C1, C_2=C2, C_3=C3,
+                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
+
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
 q1, q2 = Tesla_Coil_Solver(t, pars)
 VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
@@ -48,8 +52,6 @@ st.line_chart(chart_data)
 
 # calls global wrapper function, plugging in those input parameters
 # puts the return values into their own variables
-pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1=C1, C_2=C2, C_3=C3,
-                    AC_amplitude=ac_amp, AC_frequency=ac_freq, sparky_distance=sparky_distance, k1= k1, k2=k1)
 
 
 # sends those values to the global steady state function
