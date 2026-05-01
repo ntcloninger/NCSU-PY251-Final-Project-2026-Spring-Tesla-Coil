@@ -7,7 +7,6 @@ from Tesla_Coil_Code.Steady_State.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.Tesla_Coil.TeslaCoil import Tesla_Coil_Solver
 
 
-
 # Shows the tesla coil curcuit for demonstration purposes 
 st.image("1000002237.jpg", caption="Tesla Coil Circuit Diagram")
 
