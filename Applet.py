@@ -42,29 +42,34 @@ pars = input_wrapper(L_1=L1, L_2=L2, L_3=L3, L_4=L4, R_1=R1, R_2=R2, R_3=R3, C_1
 t_array = np.linspace(0,10/(pars[11]*2*np.pi),10000)
 q1, q2 = Tesla_Coil_Solver(t_array, pars)
 
-VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
+VA1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[13]*np.sqrt(pars[0]*pars[1])*q1[:,5]
 VA2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
+
 VB1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
 VB2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
-VC1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0]
+
+VC1_array = (pars[0])*q1[:,2]+(pars[4])*q1[:,1]+(pars[7])*q1[:,0] - pars[14]*np.sqrt(pars[2]*pars[3])*q1[:,5]
 VC2_array = (pars[0])*q2[:,2]+(pars[4])*q2[:,1]+(pars[7])*q2[:,0]
 
-if voltage_point == 'A' or voltage_point == 'a':
-    if breakdown == 'B' or breakdown == 'b':
+if str.capitalize(list(voltage_point)[-1]) == 'A':
+    if str.capitalize(breakdown) == 'B' or str.capitalize(breakdown) == 'BEFORE':
         output_voltage_array = VA1_array
-    if breakdown == 'A' or breakdown == 'a':
+
+    if str.capitalize(breakdown) == 'A' or str.capitalize(breakdown) == 'AFTER':
         output_voltage_array = VA2_array
 
-if voltage_point == 'B' or voltage_point == 'd':
-    if breakdown == 'B' or breakdown == 'b':
+if str.capitalize(list(voltage_point)[-1]) == 'B':
+    if str.capitalize(breakdown) == 'B' or str.capitalize(breakdown) == 'BEFORE':
         output_voltage_array = VB1_array
-    if breakdown == 'A' or breakdown == 'a':
+
+    if str.capitalize(breakdown) == 'A' or str.capitalize(breakdown) == 'AFTER':
         output_voltage_array = VB2_array
 
-if voltage_point == 'C' or voltage_point == 'c':
-    if breakdown == 'B' or breakdown == 'b':
+if str.capitalize(list(voltage_point)[-1]) == 'C':
+    if str.capitalize(breakdown) == 'B' or str.capitalize(breakdown) == 'BEFORE':
         output_voltage_array = VC1_array
-    if breakdown == 'A' or breakdown == 'a':
+
+    if str.capitalize(breakdown) == 'A' or str.capitalize(breakdown) == 'AFTER':
         output_voltage_array = VC2_array
 
 
@@ -79,10 +84,6 @@ st.line_chart(chart_data)
 
 # sends those values to the global steady state function
 # returned values get used to make a graph 
-# loop 1: voltPars[0] returns charge, voltPars[1] is change in charge, voltPars[2] change in change in charge
-# loop 2: voltPars[3] returns charge, voltPars[4] is change in charge, voltPars[5] change in change in charge
-# loop 3: voltPars[6] returns charge, voltPars[7] is change in charge, voltPars[8] change in change in charge
-
 # creates the 3 graphs
 
 """ Va = 
