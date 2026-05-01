@@ -9,4 +9,4 @@ All of the code to create the coil is in Tesla_Coil_Code.
 Our user inputs are in Applet.py, and circuit.png creates the tesla coil diagram on our final website. 
 In order to see our final project, run Applet.py, and make sure to install streamlit and schemdraw first. 
 Give it a second to run, the aesthetic changes and diagram sometimes take a minute to load. 
-You should be able to play with the inputs as much as you like, and it will always create a functioning graph. 
+You should be able to play with the inputs as much as you like, and it will always create a functioning graph.
