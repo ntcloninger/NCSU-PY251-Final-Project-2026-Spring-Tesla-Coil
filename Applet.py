@@ -130,7 +130,7 @@ if str.capitalize(list(voltage_point)[-1]) == 'C':
 #first put in the y axis, then index=x axis
 chart_data = pd.DataFrame(output_voltage_array, index=t_array)
 #creates the graph!
-st.line_chart(chart_data)
+st.line_chart(chart_data, x_label='Time(s)', y_label='Voltage(V)')
 
 
 
