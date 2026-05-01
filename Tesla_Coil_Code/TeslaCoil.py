@@ -35,8 +35,8 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
             p = 101325 #pascals
             gamma_se = 0.5 #Half of atoms give of another electron
             self.Breakdown_Voltage = (1/100)*(B*p*self.sparky_distance)/(np.log(A*p*self.sparky_distance) - np.log(np.log(1 + 1/gamma_se)))#pashen cure function
-            self.q_initial = [0,0,0,0,0,0,0,0,0]
-            self.q_steady_state = [0,0,0,0,0,0,0,0,0]
+            self.q_initial_1 = [0,0,0,0,0,0,0,0,0]
+
             #q[i-1][derivative]
 
         def f(self,t):
@@ -45,48 +45,45 @@ def Tesla_Coil_Solver(t, pars): #take in initial value and parameters
         def df(self,t):
             return self.AC_frequency*self.AC_amplitude*np.cos(self.AC_frequency*t)
 
-        def deriv(self, q,t):#organizes derivative equations with given initial
-
-
-            if (self.L2*q[5] - self.M1*q[2]) < self.Breakdown_Voltage:
-                dq2_2_temp = ((self.M2/self.L4)*(self.R3*q[8] + q[7]/self.C3 - self.R2*q[5] + q[4]/self.C2\
-                           - (self.M1/self.L1)*(self.df(t) + q[1]/self.C1) + self.R1*q[2]))\
-                           /(self.L3-self.L2 + (self.k1**2)*self.L2 - (self.k2**2)*self.L3)
-            #
-            #
-                dq1_2_temp = (-self.AC_amplitude*self.AC_frequency*np.cos(self.AC_frequency*t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
-                dq3_2_temp = (-self.R3*q[8] - q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
-                dq = [q[1],\
-                      q[2],\
-                      dq1_2_temp,\
-                      q[4],\
-                      q[5],\
-                      dq2_2_temp,\
-                      q[7],\
-                      q[8],\
-                      dq3_2_temp]
-            else:
-                dq2_2_temp = (self.L1*(self.Rsparky - self.R2)*q[5] \
-                           + self.M1*(self.df(t) - q[1]/self.C2 - self.R1*q[2]))\
-                           /(self.L1*self.L2 - self.M1*self.M2)
-                dq1_2_temp = (self.df(t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
-                dq3_2_temp = (self.R3*q[8] + q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
-                dq = [q[1],\
-                      q[2],\
-                      dq1_2_temp,\
-                      q[4],\
-                      q[5],\
-                      dq2_2_temp,\
-                      q[7],\
-                      q[8],\
-                      dq3_2_temp]
-            
+        def deriv1(self, q,t):#organizes derivative equations with given initial
+            dq2_2_temp = ((self.M2/self.L4)*(self.R3*q[8] + q[7]/self.C3 - self.R2*q[5] + q[4]/self.C2\
+                       - (self.M1/self.L1)*(self.df(t) + q[1]/self.C1) + self.R1*q[2]))\
+                       /(self.L3-self.L2 + (self.k1**2)*self.L2 - (self.k2**2)*self.L3)
+            dq1_2_temp = (-self.AC_amplitude*self.AC_frequency*np.cos(self.AC_frequency*t) - q[1]/self.C1 - self.R1*q[2] + self.M1*dq2_2_temp)/self.L1
+            dq3_2_temp = (-self.R3*q[8] - q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
+            dq = [q[1],\
+                    q[2],\
+                    dq1_2_temp,\
+                    q[4],\
+                    q[5],\
+                    dq2_2_temp,\
+                    q[7],\
+                    q[8],\
+                    dq3_2_temp]
             return dq
+        
+        def deriv2(self, q,t):#organizes derivative equations with given initial
+            dq2_2_temp = (self.M2/(self.L4*(self.L4+self.L3*(1-self.k2**2))))*(-self.R3*q[8]-(1/self.C2)*q[7])
+            dq1_2_temp = (-self.df(t) - q[1]/self.C1 - self.R1*q[2])/self.L1
+            dq3_2_temp = (-self.R3*q[8] - q[7]/self.C3 + self.M2*dq2_2_temp)/self.L4
+            dq = [q[1],\
+                    q[2],\
+                    dq1_2_temp,\
+                    q[4],\
+                    q[5],\
+                    dq2_2_temp,\
+                    q[7],\
+                    q[8],\
+                    dq3_2_temp]
+            return dq
+            
         
     def diffeq_solver_from_scipy(deriv, q_initial, t): #solves diff equation
         q = odeint(deriv, q_initial, t)
         return q
     
     input_system = Tesla_Coil(pars)
-
-    return diffeq_solver_from_scipy(input_system.deriv, input_system.q_initial, t) 
+    q1 = diffeq_solver_from_scipy(input_system.deriv1, input_system.q_initial_1, t)
+    qi2 = [q1[-1][0],q1[-1][1],q1[-1][2],input_system.Breakdown_Voltage*input_system.C2,q1[-1][4],q1[-1][5],q1[-1][6],q1[-1][7],q1[-1][8]]
+    q2 = diffeq_solver_from_scipy(input_system.deriv2, qi2, t + t[-1]) 
+    return q1,q2
