@@ -1,7 +1,7 @@
 # NCSU-PY251-Final-Project-2026-Spring-Tesla-Coil
 
 Set Up information: 
-For this project, you need to have streamlit, numpy, and pandas. In order to download streamlit, just use "pip install streamlit". In order to run it, go to the Applet, and type "streamlit run Applet.py". 
+For this project, you need to have streamlit, numpy, and pandas. In order to download streamlit, just use "pip install streamlit". In order to run it, go to the Applet, and type "streamlit run Applet.py". Streamlit should automatically install numpy, pandas, and any other important libraries. 
 
 Background Information: 
 Tesla Coil. 
