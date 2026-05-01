@@ -6,7 +6,6 @@ import pandas as pd
 import schemdraw
 import schemdraw.elements as e
 from Tesla_Coil_Code.Input_Wrapper import input_wrapper
-#from Tesla_Coil_Code.Graph_Creater import Cycle_Graph_20
 from Tesla_Coil_Code.TeslaCoil import Tesla_Coil_Solver
 
 #Background Color
